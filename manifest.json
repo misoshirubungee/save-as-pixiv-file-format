@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Funco",
+    "version": "0.0.0.1",
+    "description": "A description of my Edge extension.",
+    "permissions": ["contextMenus", "downloads"],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
