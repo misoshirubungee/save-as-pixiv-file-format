@@ -1,3 +1,4 @@
+"use strict";
 chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
         id: "saveRevasableImage",
@@ -7,10 +8,12 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.contextMenus.onClicked.addListener(info => {
-    console.log(info);
     if (info.menuItemId === "saveRevasableImage") {
         const urlModule = new UrlModule(info.pageUrl);
         const filename = urlModule.createFilename();
+        if (filename === "") {
+           throw new Error("未対応のドメインです。");
+        }
         chrome.downloads.download({
             url: info.srcUrl,
             filename: filename
