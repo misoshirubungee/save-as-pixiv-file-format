@@ -1,10 +1,13 @@
 {
     "manifest_version": 3,
     "name": "Funco",
-    "version": "0.0.0.1",
-    "description": "A description of my Edge extension.",
-    "permissions": ["contextMenus", "downloads"],
+    "version": "0.0.0.2",
+    "description": "画像を元ソースにアクセスできるように名前を付けて保存と、画像から元ソースへアクセス。",
+    "permissions": ["contextMenus", "downloads", "tabs"],
     "background": {
         "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup/popup.html"
     }
 }

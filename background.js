@@ -32,14 +32,14 @@ class UrlModule {
         const pathList = this.pathname.split("/").filter(segment => segment);
         switch(this.hostname) {
             case "x.com": {
-                const POST_ID = 2;
-                const PAGE_ID = 4;
-                return `${pathList[POST_ID]}_x${pathList[PAGE_ID]}.jpg`;
+                const postId = 2;
+                const pageId = 4;
+                return `${pathList[postId]}_x${pathList[pageId]}.jpg`;
             }
             case "fantia.jp": {
-                const POST_ID = 1;
-                const PAGE_ID = 3;
-                return `${pathList[POST_ID]}_f${pathList[PAGE_ID]}.jpg`;
+                const postId = 1;
+                const pageId = 3;
+                return `${pathList[postId]}_f${pathList[pageId]}.jpg`;
             }
             default:
                 return "";

@@ -15,3 +15,4 @@
 ## 対応サイト
 * x.com
 * fantia.jp
+* pixiv.net
