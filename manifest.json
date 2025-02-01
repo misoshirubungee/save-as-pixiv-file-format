@@ -1,11 +1,12 @@
 {
     "manifest_version": 3,
-    "name": "Funco",
+    "name": "Save as pixiv format.",
     "version": "0.0.0.2",
     "description": "画像を元ソースにアクセスできるように名前を付けて保存と、画像から元ソースへアクセス。",
     "permissions": ["contextMenus", "downloads", "tabs"],
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "background.js",
+        "type": "module"
     },
     "action": {
         "default_popup": "popup/popup.html"
