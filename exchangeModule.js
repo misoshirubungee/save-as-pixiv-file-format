@@ -1,7 +1,7 @@
 export function file2url(file) {
     "use strict";
     if (!file) {
-        return new Error("Argument is not defined.");
+        throw new Error("Argument is not defined.");
     }
     const filename = file.name.split("_");
     const postId = filename[0];
@@ -14,14 +14,14 @@ export function file2url(file) {
         case "p":
             return `https://www.pixiv.net/artworks/${postId}`;
         default:
-            return new Error("Unsupported domain.");
+            throw new Error(`${file} is unsupported file.`);
     }
 }
 
 export function url2file(url) {
     "use strict";
     if (!url) {
-        return new Error("Argument is not defined.");
+        throw new Error("Argument is not defined.");
     }
     const hostname = new URL(url).hostname;
     const pathname = new URL(url).pathname;
@@ -38,7 +38,7 @@ export function url2file(url) {
             return `${pathList[postId]}_f${pathList[pageId]}.jpg`;
         }
         default:
-            return new Error("Unsupported hostname.");
+            throw new Error(`${hostname} is unsupported hostname.`);
     }
 }
 
