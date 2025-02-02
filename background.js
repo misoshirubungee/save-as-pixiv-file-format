@@ -12,14 +12,29 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener(info => {
     "use strict";
     if (info.menuItemId === "saveRevasableImage") {
-        const filename = exchangeModule.url2file(info.pageUrl);
-        if (filename instanceof Error) {
-            console.error(filename.message);
-            return;
+        try {
+            const filename = exchangeModule.url2file(info.srcUrl);
+            chrome.downloads.download({
+                url: info.srcUrl,
+                filename: filename
+            });
+        } catch (error) {
+            getCurrentTab().then(tab => {
+                chrome.scripting.executeScript({
+                    target: { tabId: tab.id },
+                    func: () => {
+                        alert("このページは対応していません。");
+                    }
+                });
+            });
+            console.log(error);
         }
-        chrome.downloads.download({
-            url: info.srcUrl,
-            filename: filename
-        });
+        
     }
 });
+
+const getCurrentTab = async () => {
+    const queryOptions = { active: true, currentWindow: true };
+    const [tab] = await chrome.tabs.query(queryOptions);
+    return tab;
+}

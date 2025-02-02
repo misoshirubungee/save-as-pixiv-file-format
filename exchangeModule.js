@@ -1,4 +1,4 @@
-export function file2url(file) {
+export const file2url = file => {
     "use strict";
     if (!file) {
         throw new Error("Argument is not defined.");
@@ -18,7 +18,7 @@ export function file2url(file) {
     }
 }
 
-export function url2file(url) {
+export const url2file = url => {
     "use strict";
     if (!url) {
         throw new Error("Argument is not defined.");
