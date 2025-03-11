@@ -13,7 +13,7 @@ chrome.contextMenus.onClicked.addListener(info => {
     "use strict";
     if (info.menuItemId === "saveRevasableImage") {
         try {
-            const filename = exchangeModule.url2file(info.srcUrl);
+            const filename = exchangeModule.url2file(info.pageUrl);
             chrome.downloads.download({
                 url: info.srcUrl,
                 filename: filename
